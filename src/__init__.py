@@ -1,0 +1,13 @@
+"""
+Package marker for the project source code.
+
+You can run training as:
+  python train.py ...
+
+or as a module:
+  python -m src.train ...
+
+Likewise for prediction:
+  python predict.py ...
+  python -m src.predict ...
+"""

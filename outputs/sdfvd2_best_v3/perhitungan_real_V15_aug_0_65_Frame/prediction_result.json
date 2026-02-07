@@ -1,0 +1,13 @@
+{
+  "decision_function": 0.9998094263953075,
+  "svm_intercept": 0.19869649110888152,
+  "classes": [
+    "not_real",
+    "real"
+  ],
+  "probabilities": {
+    "not_real": 0.4680256112204559,
+    "real": 0.5319743887795442
+  },
+  "predicted_label": "real"
+}

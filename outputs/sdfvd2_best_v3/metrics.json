@@ -1,0 +1,24 @@
+{
+  "accuracy": 0.43915343915343913,
+  "precision_macro": 0.38865853658536587,
+  "recall_macro": 0.44884580905423577,
+  "f1_macro": 0.3585425204918033,
+  "confusion_matrix": [
+    [
+      8,
+      89
+    ],
+    [
+      17,
+      75
+    ]
+  ],
+  "label_order": [
+    "real",
+    "not_real"
+  ],
+  "n_train": 738,
+  "n_test": 189,
+  "n_total": 927,
+  "n_features": 144
+}

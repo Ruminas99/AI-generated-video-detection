@@ -1,0 +1,14 @@
+{
+  "img_size": 256,
+  "denoise": true,
+  "lbp_points": 16,
+  "lbp_radius": 2,
+  "lbp_method": "uniform",
+  "frame_stride": 1,
+  "fps_sample": null,
+  "max_frames": 10000,
+  "face_crop": true,
+  "face_margin": 0.25,
+  "grid_size": 2,
+  "include_std": true
+}

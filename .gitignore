@@ -1,0 +1,22 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env
+
+# --- OS / editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# --- DATASET (JANGAN DI-UPLOAD) ---
+/data
+data/celeb_v1/
+data/sdfvd2.0/
+
+# Keep placeholder files
+!.gitkeep

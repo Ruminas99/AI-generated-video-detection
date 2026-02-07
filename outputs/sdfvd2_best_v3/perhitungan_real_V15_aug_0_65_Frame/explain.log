@@ -1,0 +1,9 @@
+2026-02-07 11:18:30 [INFO] explain: Video: C:\ai-video-lbp-svm\data\sdfvd2.0\real\real_v15_aug_0.mp4
+2026-02-07 11:18:30 [INFO] explain: Model: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\model.joblib
+2026-02-07 11:18:30 [INFO] explain: Features CSV: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\features.csv
+2026-02-07 11:18:30 [INFO] explain: Using feature config: {'img_size': 256, 'denoise': True, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'face_crop': True, 'face_margin': 0.25, 'grid_size': 2, 'include_std': True}
+2026-02-07 11:18:32 [INFO] explain: Frames used: 65
+2026-02-07 11:18:32 [INFO] explain: Video feature dim: 144
+2026-02-07 11:18:32 [INFO] explain: Cache match found in features.csv. max_abs_diff=0.00000000 | mse=0.0000000000
+2026-02-07 11:18:32 [INFO] explain: Saved top 30 contributions: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\perhitungan_real_V15_aug_0_65_Frame\top30_feature_contributions.csv
+2026-02-07 11:18:32 [INFO] explain: DONE. See output folder: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\perhitungan_real_V15_aug_0_65_Frame

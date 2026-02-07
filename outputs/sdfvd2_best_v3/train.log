@@ -1,0 +1,79 @@
+2026-02-03 20:58:09 [INFO] train: Args: {'dataset_root': 'data\\sdfvd2.0', 'labels_csv': None, 'out_dir': 'outputs\\sdfvd2_best_v3', 'class_dir_map': 'real=real,not_real=not_real', 'reuse_features': False, 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'img_size': 256, 'denoise': True, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'include_std': True, 'face_crop': True, 'face_margin': 0.25, 'grid_size': 2, 'test_size': 0.2, 'random_state': 42, 'group_split': True, 'svm_kernel': 'rbf', 'C': 10.0, 'gamma': '0.1', 'degree': 3, 'class_weight': 'balanced'}
+2026-02-03 20:58:09 [INFO] train: Class 'real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\real': 456 videos
+2026-02-03 20:58:09 [INFO] train: Class 'not_real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\not_real': 471 videos
+2026-02-03 20:58:09 [INFO] train: Loaded 927 samples (discovered total=927).
+2026-02-03 20:58:09 [INFO] train: Extracting features -> C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\features.csv
+2026-02-03 20:58:09 [INFO] train: Feature config: {'img_size': 256, 'denoise': True, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'face_crop': True, 'face_margin': 0.25, 'grid_size': 2, 'include_std': True} | feature_dim=144
+2026-02-03 21:36:28 [INFO] train: Saved features to C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\features.csv (927 videos; skipped=0).
+2026-02-03 21:36:28 [INFO] train: Loaded features: n=927, dim=144, labels=['not_real', 'real']
+2026-02-03 21:36:28 [INFO] train: Group split ON: train=738, test=189
+2026-02-03 21:36:28 [INFO] train: Training SVM: kernel=rbf, C=10.0, gamma=0.1, degree=3, class_weight=balanced
+2026-02-03 21:36:28 [INFO] train: Accuracy  : 0.4392
+2026-02-03 21:36:28 [INFO] train: Precision : 0.3887 (macro)
+2026-02-03 21:36:28 [INFO] train: Recall    : 0.4488 (macro)
+2026-02-03 21:36:28 [INFO] train: F1-score  : 0.3585 (macro)
+2026-02-03 21:36:28 [INFO] train: Confusion matrix (labels=['real', 'not_real']):
+[[ 8 89]
+ [17 75]]
+2026-02-03 21:36:28 [INFO] train: Classification report:
+              precision    recall  f1-score   support
+
+        real       0.32      0.08      0.13        97
+    not_real       0.46      0.82      0.59        92
+
+    accuracy                           0.44       189
+   macro avg       0.39      0.45      0.36       189
+weighted avg       0.39      0.44      0.35       189
+
+2026-02-03 21:36:28 [INFO] train: Saved model: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\model.joblib
+2026-02-03 21:36:28 [INFO] train: Saved metrics.json + config.json in C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3
+2026-02-03 21:36:28 [INFO] train: DONE.
+2026-02-07 10:42:55 [INFO] train: Args: {'dataset_root': 'data\\sdfvd2.0', 'labels_csv': None, 'out_dir': 'outputs\\sdfvd2_best_v3', 'class_dir_map': 'real=real,not_real=not_real', 'reuse_features': True, 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'img_size': 256, 'denoise': False, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'face_crop': False, 'face_margin': 0.25, 'grid_size': 2, 'include_std': False, 'split_mode': 'random', 'test_size': 0.2, 'random_state': 42, 'stratify': False, 'use_frames_used': False, 'svm_kernel': 'linear', 'C': 10.0, 'gamma': 'scale', 'degree': 3, 'class_weight': 'balanced'}
+2026-02-07 10:42:55 [INFO] train: Class 'real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\real': 456 videos
+2026-02-07 10:42:55 [INFO] train: Class 'not_real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\not_real': 471 videos
+2026-02-07 10:42:55 [INFO] train: Loaded 927 samples total.
+2026-02-07 10:42:55 [INFO] train: Reusing features: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\features.csv
+2026-02-07 10:42:55 [INFO] train: Split mode=random (non-stratified / notebook-like): train=741 test=186
+2026-02-07 10:42:55 [INFO] train: Training SVM: kernel=linear, C=10.0000, gamma=scale, class_weight=balanced | input_cols=['frames_used', 'feat_0', 'feat_1', '...']
+2026-02-07 10:43:00 [INFO] train: Confusion matrix (labels=[real, not_real]):
+[[82 18]
+ [18 68]]
+2026-02-07 10:43:00 [INFO] train: Classification report:
+              precision    recall  f1-score   support
+
+    not_real     0.7907    0.7907    0.7907        86
+        real     0.8200    0.8200    0.8200       100
+
+    accuracy                         0.8065       186
+   macro avg     0.8053    0.8053    0.8053       186
+weighted avg     0.8065    0.8065    0.8065       186
+
+2026-02-07 10:43:00 [INFO] train: Saved model: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\model.joblib
+2026-02-07 10:43:00 [INFO] train: Saved test predictions: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\test_predictions.csv
+2026-02-07 10:43:00 [INFO] train: DONE.
+2026-02-07 10:50:34 [INFO] train: Args: {'dataset_root': 'data\\sdfvd2.0', 'labels_csv': None, 'out_dir': 'outputs\\sdfvd2_best_v3', 'class_dir_map': 'real=real,not_real=not_real', 'reuse_features': True, 'ignore_saved_config': False, 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'img_size': 256, 'denoise': True, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'face_crop': True, 'face_margin': 0.25, 'grid_size': 2, 'include_std': True, 'split_mode': 'random', 'test_size': 0.2, 'random_state': 42, 'stratify': False, 'use_frames_used': True, 'svm_kernel': 'linear', 'C': 10.0, 'gamma': 'scale', 'degree': 3, 'class_weight': 'balanced'}
+2026-02-07 10:50:34 [INFO] train: Class 'real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\real': 456 videos
+2026-02-07 10:50:34 [INFO] train: Class 'not_real' from folder 'C:\ai-video-lbp-svm\data\sdfvd2.0\not_real': 471 videos
+2026-02-07 10:50:34 [INFO] train: Loaded 927 samples total.
+2026-02-07 10:50:34 [INFO] train: Loaded saved feature config from C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\config.json
+2026-02-07 10:50:34 [INFO] train: Using feature config: {'img_size': 256, 'denoise': True, 'lbp_points': 16, 'lbp_radius': 2, 'lbp_method': 'uniform', 'frame_stride': 1, 'fps_sample': None, 'max_frames': 10000, 'face_crop': True, 'face_margin': 0.25, 'grid_size': 2, 'include_std': True}
+2026-02-07 10:50:34 [INFO] train: Reusing features: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\features.csv
+2026-02-07 10:50:34 [INFO] train: Training inputs: use_frames_used=True | n_samples=927 | n_features=145
+2026-02-07 10:50:34 [INFO] train: Split mode=random (non-stratified / notebook-like): train=741 test=186
+2026-02-07 10:50:34 [INFO] train: Training SVM: kernel=linear, C=10.0000, gamma=scale, class_weight=balanced
+2026-02-07 10:50:39 [INFO] train: Confusion matrix (labels=[real, not_real]):
+[[82 18]
+ [18 68]]
+2026-02-07 10:50:39 [INFO] train: Classification report:
+              precision    recall  f1-score   support
+
+    not_real     0.7907    0.7907    0.7907        86
+        real     0.8200    0.8200    0.8200       100
+
+    accuracy                         0.8065       186
+   macro avg     0.8053    0.8053    0.8053       186
+weighted avg     0.8065    0.8065    0.8065       186
+
+2026-02-07 10:50:39 [INFO] train: Saved model: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\model.joblib
+2026-02-07 10:50:39 [INFO] train: Saved test predictions: C:\ai-video-lbp-svm\outputs\sdfvd2_best_v3\test_predictions.csv
+2026-02-07 10:50:39 [INFO] train: DONE.
