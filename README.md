@@ -132,23 +132,6 @@ Sumber hasil evaluasi:
 
 ![Sample Predictions](docs/images/sample_predictions_table.png)
 
-## Re-generate Gambar
-
-Jika ingin membuat ulang semua gambar README, jalankan notebook:
-
-`docs/generate_readme_images.ipynb`
-
-Notebook tersebut menghasilkan 4 file gambar berikut:
-
-1. `pipeline_overview.png`
-   - Diagram alur end-to-end dari video input sampai output klasifikasi.
-2. `preprocessing_stages.png`
-   - Visual tahapan preprocessing (original, grayscale, resize, denoise, face crop, LBP).
-3. `confusion_matrix.png`
-   - Heatmap confusion matrix pada test set.
-4. `sample_predictions_table.png`
-   - Cuplikan tabel hasil prediksi (video, label prediksi, confidence/probability).
-
 ## Limitasi
 
 - Pendekatan berbasis LBP sensitif terhadap kualitas video, kompresi, dan pencahayaan.
@@ -163,4 +146,4 @@ Notebook tersebut menghasilkan 4 file gambar berikut:
 
 ## Author
 
-Ruminas99
+Ergy David Lundy
