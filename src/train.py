@@ -39,8 +39,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
         action="store_true",
         help="If set, do NOT load out_dir/config.json when reusing features.",
     )
+    p.add_argument(
+        "--extract_only",
+        action="store_true",
+        help="Only extract and save features/config, then exit without training.",
+    )
 
-    # Feature params (DEFAULTS = best_v3)
+    # Feature params
     p.add_argument("--frame_stride", type=int, default=1)
     p.add_argument("--fps_sample", type=float, default=None)
     p.add_argument("--max_frames", type=int, default=10000)
@@ -72,8 +77,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--stratify", dest="stratify", action="store_true", default=False)
     p.add_argument("--no_stratify", dest="stratify", action="store_false")
 
-    # Include frames_used as feature (DEFAULT ON, karena kamu pakai itu di run 80%)
-    p.add_argument("--use_frames_used", dest="use_frames_used", action="store_true", default=True)
+    # Include frames_used as feature (DEFAULT OFF — bukan fitur visual)
+    p.add_argument("--use_frames_used", dest="use_frames_used", action="store_true", default=False)
     p.add_argument("--no_frames_used", dest="use_frames_used", action="store_false")
 
     # SVM defaults (match your good run)
@@ -158,7 +163,7 @@ def main(argv: Optional[list[str]] = None) -> None:
     if saved_cfg is not None:
         cfg = saved_cfg
     else:
-        # use CLI config (defaults already best_v3)
+        # use CLI config
         cfg = FeatureConfig(
             img_size=args.img_size,
             denoise=bool(args.denoise),
@@ -184,6 +189,13 @@ def main(argv: Optional[list[str]] = None) -> None:
         extract_dataset_features(samples, cfg, features_csv, logger_=log)
         # Save config that matches these features
         (out_dir / "config.json").write_text(json.dumps(cfg.to_dict(), indent=2), encoding="utf-8")
+
+    if args.extract_only:
+        log.info("extract_only=True. Skipping split, training, and evaluation.")
+        log.info("Saved features: %s", features_csv)
+        log.info("Saved config: %s", out_dir / "config.json")
+        log.info("DONE (extract only).")
+        return
 
     # Load feature matrix
     df, X, y, input_cols = load_features_csv(features_csv, use_frames_used=bool(args.use_frames_used))

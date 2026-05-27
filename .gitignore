@@ -18,5 +18,20 @@ Thumbs.db
 data/celeb_v1/
 data/sdfvd2.0/
 
+# --- PORTOFOLIO/CORE ONLY ---
+testing_backup/
+uji_keseluruhan/
+preview_not_real/
+preview_real/
+outputs/train_versi_ipynb/
+outputs/sdfvd2_best_v3/train.log
+outputs/sdfvd2_best_v3/model.joblib
+outputs/sdfvd2_best_v3/model.pkl
+outputs/sdfvd2_best_v3/perhitungan_*/
+explain_video.py
+app.ipynb
+SVM/
+*.ipynb_checkpoints
+
 # Keep placeholder files
 !.gitkeep

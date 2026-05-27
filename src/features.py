@@ -19,11 +19,6 @@ logger = logging.getLogger(__name__)
 
 @dataclass(frozen=True)
 class FeatureConfig:
-    """
-    Defaults set to match your sdfvd2_best_v3 config.json:
-      img_size=256, denoise=True, P=16, R=2, uniform, stride=1, max_frames=10000,
-      face_crop=True, grid_size=2, include_std=True
-    """
     img_size: int = 256
     denoise: bool = True
 
@@ -200,7 +195,6 @@ def extract_video_features(
 
                 hist = lbp_histogram_grid(gray, cfg.lbp_points, cfg.lbp_radius, cfg.lbp_method, cfg.grid_size)
                 if hist.shape[0] != per_frame_len:
-                    # safety
                     hist = hist[:per_frame_len] if hist.shape[0] > per_frame_len else np.pad(hist, (0, per_frame_len - hist.shape[0]))
                 hists.append(hist.astype(np.float32))
                 frames_used += 1
@@ -225,7 +219,6 @@ def extract_video_features(
     else:
         feat = mean_vec
 
-    # final safety
     dim = feature_dim(cfg)
     if feat.shape[0] != dim:
         feat = feat[:dim] if feat.shape[0] > dim else np.pad(feat, (0, dim - feat.shape[0]))
