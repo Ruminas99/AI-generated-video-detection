@@ -1,27 +1,27 @@
-# Deteksi AI-Generated Video Menggunakan LBP + SVM
+# AI-Generated Video Detection Using LBP + SVM
 
-Proyek ini membangun pipeline klasifikasi video untuk membedakan video real dan AI-generated (deepfake) menggunakan fitur tekstur Local Binary Pattern (LBP) dan classifier Support Vector Machine (SVM).
+This project builds a video classification pipeline designed to distinguish between real and AI-generated (deepfake) videos. It relies on Local Binary Pattern (LBP) for texture feature extraction, paired with a Support Vector Machine (SVM) classifier.
 
-## Ringkasan
+## Overview
 
-- Tujuan: klasifikasi biner video menjadi `real` atau `not_real`
-- Pendekatan: feature engineering berbasis LBP + model SVM
-- Framework utama: OpenCV, scikit-image, scikit-learn
+- Goal: Binary video classification `real` or `not_real`
+- Approach: LBP-based feature engineering combined with an SVM model.
+- Core Frameworks: OpenCV, scikit-image, scikit-learn.
 - Entry point:
   - Training: `train.py`
-  - Prediksi satu video: `predict.py`
+  - Single video prediction: `predict.py`
 
 ## Highlights
 
-- Pipeline klasik yang ringan dan mudah dijelaskan untuk konteks penelitian.
-- Feature extraction berbasis tekstur (LBP) pada level frame, lalu diagregasi ke level video.
-- Training dan inferensi terpisah rapi untuk reproducibility.
+- A lightweight, explainable classic machine learning pipeline—perfect for research contexts.
+- Texture-based feature extraction (LBP) at the frame level, seamlessly aggregated into video-level features.
+- Clean separation between training and inference scripts to ensure reproducibility.
 
-## Alur Metode
+## Pipeline Flow
 
 `video -> frame sampling -> preprocessing -> optional face crop -> LBP per frame -> agregasi fitur video -> StandardScaler -> SVM -> evaluasi`
 
-## Struktur Proyek (Inti)
+## Core Project Structure
 
 ```text
 .
@@ -49,7 +49,7 @@ Proyek ini membangun pipeline klasifikasi video untuk membedakan video real dan 
         `-- test_predictions.csv
 ```
 
-## Setup Environment
+## Environment Setup
 
 ```powershell
 python -m venv .venv
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 
 ## Dataset
 
-Struktur dataset yang direkomendasikan:
+Recommended dataset structure:
 
 ```text
 data/
@@ -68,53 +68,52 @@ data/
 	 `-- not_real/
 ```
 
-Catatan:
-- Folder dataset tidak disarankan untuk di-upload ke GitHub karena ukuran besar.
-- Format kelas default di kode: `real` dan `not_real`.
+Notes:
+- The default class labels used in the code are `real` dan `not_real`.
 
-## Cara Training
+## How to Train
 
-Contoh training utama:
+Main training example:
 
 ```powershell
 python train.py --dataset_root data/sdfvd2.0 --out_dir outputs/sdfvd2_best_v3 --reuse_features --svm_kernel linear --C 10 --class_weight balanced
 ```
 
-Output penting yang dihasilkan:
+Key outputs generated:
 - `outputs/sdfvd2_best_v3/model.joblib`
 - `outputs/sdfvd2_best_v3/config.json`
 - `outputs/sdfvd2_best_v3/test_predictions.csv`
 - `outputs/sdfvd2_best_v3/train.log`
 
-## Cara Prediksi Satu Video
+## How to Predict a Single Video
 
 ```powershell
 python predict.py --model outputs/sdfvd2_best_v3/model.joblib --video data/video_tes/sample.mp4
 ```
 
-Hasil prediksi utama:
-- Label akhir (`real` atau `not_real`)
-- Probabilitas kelas (jika model menyediakan `predict_proba`)
+Main prediction results:
+- Final label (`real` or `not_real`)
+- Class probabilities
 
 ## Reproducibility
 
-Untuk hasil yang konsisten:
-- Gunakan `random_state` tetap (default: `42`)
-- Simpan dan gunakan `config.json` dari run terbaik
-- Gunakan parameter feature extraction yang sama saat training dan inferensi
+For consistent results:
+- Keep the `random_state` fixed (default: `42`)
+- Save and reuse the `config.json` from your best run.
+- Make sure to use the exact same feature extraction parameters during both training and inference.
 
-## Hasil dan Evaluasi
+## Results & Evaluation
 
-Metrik utama yang digunakan:
+Primary metrics used:
 - Accuracy
-- Precision, Recall, F1-score per kelas
+- Precision, Recall, F1-score per class
 - Confusion matrix
 
-Sumber hasil evaluasi:
+Evaluation result sources:
 - `test_predictions.csv`
 - `metrics.json`
 
-## Visualisasi Hasil
+## Visualizations
 
 ### Pipeline Overview
 
@@ -132,18 +131,32 @@ Sumber hasil evaluasi:
 
 ![Sample Predictions](docs/images/sample_predictions_table.png)
 
-## Limitasi
+## Limitations
 
-- Pendekatan berbasis LBP sensitif terhadap kualitas video, kompresi, dan pencahayaan.
-- Generalisasi ke dataset/domain baru perlu validasi tambahan.
-- Model klasik lebih ringan, tetapi biasanya kalah dari model deep learning pada skala data sangat besar.
+- LBP-based approaches are quite sensitive to video quality, compression artifacts, and lighting conditions.
+- Generalizing this pipeline to new datasets or domains will require additional validation.
+- While classic ML models are much lighter, they generally fall short of deep learning models when trained on large-scale datasets.
 
-## Rencana Pengembangan
+## Future Roadmap
 
-- Benchmark dengan model CNN/ViT sebagai pembanding.
-- Tambahkan evaluasi cross-dataset untuk uji generalisasi.
-- Tambahkan API atau UI ringan untuk demo inferensi.
+- Run benchmarks against CNN/ViT models for comparison.
+- Implement cross-dataset evaluation to test generalization capabilities.
+- Build a lightweight API or UI for live inference demos.
 
 ## Author
 
-Ergy David Lundy
+<table width="100%" style="border: none;">
+  <tr style="border: none;">
+    <td align="left" width="50%" style="border: none;">
+      <strong>Ergy David Lundy Tumanggor</strong>
+    </td>
+    <td align="right" width="50%" style="border: none;">
+      <a href="https://www.linkedin.com/in/ergy-david-lundy/">
+        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+      </a>
+      <a href="https://github.com/Ruminas99">
+        <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" />
+      </a>
+    </td>
+  </tr>
+</table>
